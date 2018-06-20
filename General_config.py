@@ -10,6 +10,24 @@ sensor_list = {'K': '\x00', 'J': '\x01', 'T': '\x02', 'E': '\x03', 'N': '\x04', 
               '250VAC': '\x70', '1VAC': '\x74',
               }
 
+Calibration_input_list = (
+    ('Input 25mA', 0x31),
+    ('Input 5A', 0x30),
+    ('Input 150mV, 600 mV, TC ', 0x11),
+    ('Input 150mV, 600 mV, TC ', 0x13),
+    ('Input 12V, 28V', 0x21),
+    ('Input 12V, 28V', 0x23),
+    ('Input 750Ohm, 1500 Ohm, PT100, PT200, Cu10, Ni120', 0x54),
+    ('Input 750Ohm, 1500 Ohm, PT100, PT200, Cu10, Ni120', 0x55),
+    ('Input 12KOhm, PT1000', 0x51),
+    ('Input 300V High', 0x26),
+    ('Input 300V Low', 0x25),
+    ('Input 250VAc High', 0x70),
+    ('Input 250VAc Low', 0x77),
+    ('Input 1VAc High', 0x74),
+    ('Input 1VAc Low', 0x7B)
+)
+
 wire_option_list = {'3wire': '0001', '2wire': '0000'}
 analog_burnout_list = {'reserved': '00', 'upscale': '01', 'downscale': '10'}
 alarm_burnout_list = {'reserved': '00', 'alarm tripped': '01', 'alarm frozen': '10'}

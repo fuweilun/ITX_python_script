@@ -482,7 +482,7 @@ class ItxDriver:
         request_payload = '\x01\x46\x00\x04\x06\x07\xE2' + '\x20' * 2 * 4 + password + '\x20' * 5
         request = request_payload + crc_check(request_payload)
 
-        print request.encode('hex')
+        # print request.encode('hex')
         self.itx.serial.write(request)
         time.sleep(0.2)
         response = self.itx.serial.read(7)
@@ -494,6 +494,22 @@ class ItxDriver:
             print_status_bar('ITX device Encable User calibration mode', 'Fail')
             print response.encode('hex')
 
+    def calibrate_input(self, calibrate_cmd=Calibration_input_list[0]):
+
+        request_payload = '\x01\x46\x03' + calibrate_cmd[1]
+        request = request_payload + crc_check(request_payload)
+
+        # print request.encode('hex')
+        self.itx.serial.write(request)
+        time.sleep(0.2)
+        response = self.itx.serial.read(7)
+        if response == request_payload + '\x05' + crc_check(request_payload + '\x05'):
+            print_status_bar('Set Calibration mode' + calibrate_cmd[0], 'Done')
+            pass
+            # print 'ITX device configuration mode starts!'
+        else:
+            print_status_bar('Set Calibration mode' + calibrate_cmd[0], 'Fail')
+            print response.encode('hex')
 
 if __name__ == '__main__':
     itx = ItxDriver()
@@ -517,4 +533,5 @@ if __name__ == '__main__':
     '''
     itx.enable_user_calibration()
     # itx.read_config()
+
     itx.close()
