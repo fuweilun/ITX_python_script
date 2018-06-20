@@ -497,7 +497,6 @@ class ItxDriver:
 
 if __name__ == '__main__':
     itx = ItxDriver()
-
     '''
     itx.set_sensor_selection(sensor='L', burnout='downscale')
     print itx.read_holding_registers(1, 1).encode('hex')
@@ -518,5 +517,4 @@ if __name__ == '__main__':
     '''
     itx.enable_user_calibration()
     # itx.read_config()
-    # itx.read_user_calibration_data()
     itx.close()
