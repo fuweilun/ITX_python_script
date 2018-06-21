@@ -11,21 +11,21 @@ sensor_list = {'K': '\x00', 'J': '\x01', 'T': '\x02', 'E': '\x03', 'N': '\x04', 
               }
 
 Calibration_input_list = (
-    ('Input 25mA', 0x31),
-    ('Input 5A', 0x30),
-    ('Input 150mV, 600 mV, TC ', 0x11),
-    ('Input 150mV, 600 mV, TC ', 0x13),
-    ('Input 12V, 28V', 0x21),
-    ('Input 12V, 28V', 0x23),
-    ('Input 750Ohm, 1500 Ohm, PT100, PT200, Cu10, Ni120', 0x54),
-    ('Input 750Ohm, 1500 Ohm, PT100, PT200, Cu10, Ni120', 0x55),
-    ('Input 12KOhm, PT1000', 0x51),
-    ('Input 300V High', 0x26),
-    ('Input 300V Low', 0x25),
-    ('Input 250VAc High', 0x70),
-    ('Input 250VAc Low', 0x77),
-    ('Input 1VAc High', 0x74),
-    ('Input 1VAc Low', 0x7B)
+    ('Input 25mA', 0x31, 0.02),
+    ('Input 5A', 0x30, 3),
+    ('Input 150mV, 600 mV, TC ', 0x11, 0.15),
+    ('Input 150mV, 600 mV, TC ', 0x13, 0.15),
+    ('Input 12V, 28V', 0x21, 10),
+    ('Input 12V, 28V', 0x23, 10),
+    ('Input 300V High', 0x26, 200),
+    ('Input 300V Low', 0x25, 10),
+    ('Input 750Ohm, 1500 Ohm, PT100, PT200, Cu10, Ni120', 0x54, 750),
+    ('Input 750Ohm, 1500 Ohm, PT100, PT200, Cu10, Ni120', 0x55, 750),
+    ('Input 12KOhm, PT1000', 0x51, 10000),
+    ('Input 250VAc High', 0x70, 250),
+    ('Input 250VAc Low', 0x77, 1),
+    ('Input 1VAc High', 0x74, 1),
+    ('Input 1VAc Low', 0x7B, 0.1)
 )
 
 wire_option_list = {'3wire': '0001', '2wire': '0000'}

@@ -494,8 +494,7 @@ class ItxDriver:
             print_status_bar('ITX device Encable User calibration mode', 'Fail')
             print response.encode('hex')
 
-    def calibrate_input(self, calibrate_cmd=Calibration_input_list[0]):
-
+    def set_calibrate_input_register(self, calibrate_cmd=Calibration_input_list[0]):
         request_payload = '\x01\x46\x03' + calibrate_cmd[1]
         request = request_payload + crc_check(request_payload)
 
@@ -510,6 +509,52 @@ class ItxDriver:
         else:
             print_status_bar('Set Calibration mode' + calibrate_cmd[0], 'Fail')
             print response.encode('hex')
+
+    def set_calibrate_output_register(self, calibrate_cmd='\x00', info = ''):
+        request = request_payload = '\x01\x46\x04' + calibrate_cmd
+        request = request_payload + crc_check(request_payload)
+
+        # print request.encode('hex')
+        self.itx.serial.write(request)
+        time.sleep(0.2)
+        response = self.itx.serial.read(7)
+        if response == request_payload + '\x05' + crc_check(request_payload + '\x05'):
+            print_status_bar('Set Output Calibration' + info, 'Done')
+            pass
+            # print 'ITX device configuration mode starts!'
+        else:
+            print_status_bar('Set Output Calibration' + info, 'Fail')
+            print response.encode('hex')
+
+    def set_output_calibration_20(self):
+        self.set_calibrate_output_register('\x10', info='20mA')
+
+    def set_output_calibration_4(self):
+        self.set_calibrate_output_register('\x00', info='4mA')
+
+    def set_output_calibration_20_down_coarse(self):
+        self.set_calibrate_output_register('\x11', info='20mA')
+
+    def set_output_calibration_20_down_fine(self):
+        self.set_calibrate_output_register('\x12', info='20mA')
+
+    def set_output_calibration_20_up_coarse(self):
+        self.set_calibrate_output_register('\x13', info='20mA')
+
+    def set_output_calibration_20_up_fine(self):
+        self.set_calibrate_output_register('\x14', info='20mA')
+
+    def set_output_calibration_4_down_coarse(self):
+        self.set_calibrate_output_register('\x01', info='20mA')
+
+    def set_output_calibration_4_down_fine(self):
+        self.set_calibrate_output_register('\x02', info='20mA')
+
+    def set_output_calibration_4_up_coarse(self):
+        self.set_calibrate_output_register('\x03', info='20mA')
+
+    def set_output_calibration_4_up_fine(self):
+        self.set_calibrate_output_register('\x04', info='20mA')
 
 if __name__ == '__main__':
     itx = ItxDriver()
