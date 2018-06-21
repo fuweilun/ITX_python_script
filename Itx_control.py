@@ -533,28 +533,28 @@ class ItxDriver:
         self.set_calibrate_output_register('\x00', info='4mA')
 
     def set_output_calibration_20_down_coarse(self):
-        self.set_calibrate_output_register('\x11', info='20mA')
+        self.set_calibrate_output_register('\x11', info='20mA Down Coarse')
 
     def set_output_calibration_20_down_fine(self):
-        self.set_calibrate_output_register('\x12', info='20mA')
+        self.set_calibrate_output_register('\x12', info='20mA Down Fine')
 
     def set_output_calibration_20_up_coarse(self):
-        self.set_calibrate_output_register('\x13', info='20mA')
+        self.set_calibrate_output_register('\x13', info='20mA Up Coarse')
 
     def set_output_calibration_20_up_fine(self):
-        self.set_calibrate_output_register('\x14', info='20mA')
+        self.set_calibrate_output_register('\x14', info='20mA Up Fine')
 
     def set_output_calibration_4_down_coarse(self):
-        self.set_calibrate_output_register('\x01', info='20mA')
+        self.set_calibrate_output_register('\x01', info='20mA Down Coarse')
 
     def set_output_calibration_4_down_fine(self):
-        self.set_calibrate_output_register('\x02', info='20mA')
+        self.set_calibrate_output_register('\x02', info='20mA Down Fine')
 
     def set_output_calibration_4_up_coarse(self):
-        self.set_calibrate_output_register('\x03', info='20mA')
+        self.set_calibrate_output_register('\x03', info='20mA Up coarse')
 
     def set_output_calibration_4_up_fine(self):
-        self.set_calibrate_output_register('\x04', info='20mA')
+        self.set_calibrate_output_register('\x04', info='20mA Up Fine')
 
 if __name__ == '__main__':
     itx = ItxDriver()
